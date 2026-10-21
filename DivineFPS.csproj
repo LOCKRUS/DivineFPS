@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>11</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DivineFPS</RootNamespace>
+    <AssemblyName>DivineFPS</AssemblyName>
+    <GameRoot Condition="'$(GameRoot)' == ''">$(MSBuildThisFileDirectory)..\..</GameRoot>
+    <GameManaged>$(GameRoot)\worldbox_Data\Managed</GameManaged>
+    <GameMods>$(GameRoot)\worldbox_Data\StreamingAssets\mods</GameMods>
+    <NmlAssembly Condition="Exists('$(GameMods)\NeoModLoader.dll')">$(GameMods)\NeoModLoader.dll</NmlAssembly>
+    <NmlAssembly Condition="Exists('$(GameMods)\NeoModLoader_memload.dll')">$(GameMods)\NeoModLoader_memload.dll</NmlAssembly>
+    <GameAssembly Condition="Exists('$(GameMods)\NML\Assembly-CSharp-Publicized.dll')">$(GameMods)\NML\Assembly-CSharp-Publicized.dll</GameAssembly>
+    <GameAssembly Condition="Exists('$(GameMods)\NML\Assembly-CSharp-Publicized.dll') != 'true'">$(GameManaged)\Assembly-CSharp.dll</GameAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp" HintPath="$(GameAssembly)" />
+    <Reference Include="NeoModLoader" HintPath="$(NmlAssembly)" />
+    <Reference Include="UnityEngine" HintPath="$(GameManaged)\UnityEngine.dll" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(GameManaged)\UnityEngine.CoreModule.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="mod.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

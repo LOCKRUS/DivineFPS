@@ -1,0 +1,8 @@
+{
+  "name": "DivineFPS",
+  "author": "LOCKRUS",
+  "version": "0.1.0",
+  "description": "A configurable performance toolkit for WorldBox. Optimization features are being developed and measured before release.",
+  "GUID": "LOCKRUS_DIVINE_FPS",
+  "RepoUrl": "https://github.com/LOCKRUS/DivineFPS"
+}
